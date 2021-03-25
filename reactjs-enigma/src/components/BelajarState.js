@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import ComponentCount from "./ComponentCount";
+import ComponentCountClass from "./ComponentCountClass";
 
 export class BelajarState extends Component {
   constructor(props) {
@@ -16,7 +18,7 @@ export class BelajarState extends Component {
 
   //setiap make setState render() bakal di panggil terus
   plusHandle(angka) {
-    this.setState({ ...this.state, number: this.state.number + angka });
+    this.setState({ ...this.state, number: this.state.number + 1 });
   }
 
   minusHandle = (angka) => {
@@ -24,7 +26,7 @@ export class BelajarState extends Component {
     console.log("this.state.number: ", this.state.number);
     if (this.state.number > 0) {
       this.setState((state) => ({
-        number: state.number - angka,
+        number: state.number - 1,
       }));
     } else {
       alert("angka ndak bisa di kurangi lagi");
@@ -32,6 +34,7 @@ export class BelajarState extends Component {
   };
 
   render() {
+    console.log(this.state);
     console.log("render di panggil");
     console.log(this.state.number);
     let { number } = this.state;
@@ -41,9 +44,16 @@ export class BelajarState extends Component {
         <p>manggil dari destructuring let number = {number}</p>
         <p>manggil langusng dari constructor number = {this.state.number}</p>
         {/*kalo mau manggil handler dengan mengirim parameter pake arrow funtion biar ndak langsung di eksekusi*/}
-        <button onClick={() => this.plusHandle(1)}>+</button>
-        <span>{number}</span>
-        <button onClick={() => this.minusHandle(1)}>-</button>
+        <ComponentCount
+          angka={number}
+          plusHandler={this.plusHandle}
+          minusHandler={this.minusHandle}
+        />
+        <ComponentCountClass
+          angka={number}
+          plusHandler={this.plusHandle}
+          minusHandler={this.minusHandle}
+        />
       </div>
     );
   }
@@ -61,10 +71,10 @@ export class BelajarState extends Component {
     }
   }
 
-  componentDidUpdate() {
-    console.log("component didupdate panggil");
-    return alert("berhasil");
-  }
+  //   componentDidUpdate() {
+  //     console.log("component didupdate panggil");
+  //     return alert("berhasil");
+  //   }
 }
 
 export default BelajarState;

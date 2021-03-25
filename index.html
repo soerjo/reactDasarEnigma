@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script> 
+
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <!-- <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script> -->
+
+<body>
+    <div id="root"></div> 
+    <div id="component"></div> 
+    
+</body>
+<script type = 'text/babel'>
+
+    let headerTrue = <h1>Ini Bener</h1>
+    let headerFalse = <h1>Ini Salah</h1>
+    var i =1
+
+    const myElement=
+        <div>
+            {i=== 1? headerTrue : headerFalse}
+        </div>
+
+        const sebuahElement = (role) => {
+            return  <div>You are an {role}</div>
+        }
+
+    const MyComponent = () => {
+
+        const getUserType=()=>{
+            switch(userType){
+                case 'admin':
+                    return(
+                        sebuahElement('admin')
+                    )
+                    case 'manager':
+                        return(
+                            sebuahElement('manager')
+                            )
+                    case 'user':
+                        return(
+                            sebuahElement('user')
+                        )
+                        default:
+                            return(
+                                <p>sebuah contoh</p>
+                            )
+                        
+            }
+            return <p>seuhafhdusaig</p>
+        }
+
+        var userType = 'manager'
+        
+        return(
+            <div>
+                 {getUserType()}
+            </div>
+        )
+    }
+
+    ReactDOM.render(myElement,document.getElementById("root"))    
+    ReactDOM.render(<MyComponent/>,document.getElementById("component"))    
+</script>
+</html>
