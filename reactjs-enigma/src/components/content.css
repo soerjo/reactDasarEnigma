@@ -1,0 +1,9 @@
+.content {
+  color: ivory;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  height: 50vh;
+  background-color: hotpink;
+}
